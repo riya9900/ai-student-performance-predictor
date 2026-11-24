@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --tt-bg: #ffffff;
+  --tt-border: #e2e8f0;
+  --tt-text: #0f172a;
+  --grid: #e2e8f0;
+}
+.dark {
+  --tt-bg: #0f172a;
+  --tt-border: #334155;
+  --tt-text: #e2e8f0;
+  --grid: #334155;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100; font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif; }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.animate-fade-up { animation: fade-up .5s ease both; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .animate-fade-up, .animate-float { animation: none; } html { scroll-behavior: auto; } }
+
+input[type=range] { accent-color: #6366f1; }
+.recharts-tooltip-wrapper { outline: none; }

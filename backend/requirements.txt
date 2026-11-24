@@ -1,0 +1,7 @@
+# Runtime dependencies of the API. Deliberately NO scikit-learn / pandas / SciPy:
+# the trained model ships as models/model.npz and is evaluated with NumPy (app/inference.py).
+fastapi>=0.115
+uvicorn>=0.30
+pydantic>=2.7
+numpy>=1.26
+psycopg[binary]>=3.2   # only used when DATABASE_URL is set (PostgreSQL)

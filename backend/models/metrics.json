@@ -1,0 +1,122 @@
+{
+  "trained_at": "2026-11-24T15:12:38.633928+00:00",
+  "sklearn_version": "1.9.1",
+  "best_model": "Random Forest",
+  "target": "G3 (final grade, 0-20)",
+  "features": [
+    "age",
+    "studytime",
+    "failures",
+    "absences",
+    "G1",
+    "G2",
+    "goout",
+    "freetime",
+    "health",
+    "higher",
+    "internet",
+    "course"
+  ],
+  "n_rows": 1044,
+  "n_unique_students": 662,
+  "train_rows": 831,
+  "test_rows": 213,
+  "model_comparison": {
+    "Baseline (predict mean)": {
+      "cv": {
+        "MAE": 2.8234056799386136,
+        "RMSE": 3.8493898516043807,
+        "R2": -0.0016665073183208534
+      },
+      "test": {
+        "MAE": 2.8645220702473972,
+        "RMSE": 3.928392154624255,
+        "R2": -0.001878024221449115
+      }
+    },
+    "Ridge Regression": {
+      "cv": {
+        "MAE": 0.9648013714723034,
+        "RMSE": 1.6105930315925565,
+        "R2": 0.8246478924706877
+      },
+      "test": {
+        "MAE": 0.9720417879645588,
+        "RMSE": 1.4152776477547708,
+        "R2": 0.8699625405987561
+      }
+    },
+    "Random Forest": {
+      "cv": {
+        "MAE": 0.9096323575841877,
+        "RMSE": 1.4940994049739709,
+        "R2": 0.8490968365871254
+      },
+      "test": {
+        "MAE": 0.829846642282917,
+        "RMSE": 1.2902576254490639,
+        "R2": 0.8919218133485256
+      }
+    },
+    "Gradient Boosting": {
+      "cv": {
+        "MAE": 0.9307041711806371,
+        "RMSE": 1.5047619378714552,
+        "R2": 0.8469353321642002
+      },
+      "test": {
+        "MAE": 0.8988816123690732,
+        "RMSE": 1.3580781913974636,
+        "R2": 0.8802612470061408
+      }
+    }
+  },
+  "ablation_without_G1_G2": {
+    "MAE": 2.425201763550666,
+    "RMSE": 3.1114643456758295,
+    "R2": 0.37148617056884137
+  },
+  "residual_q10": -1.1859901394901353,
+  "residual_q90": 1.2610586820586835,
+  "feature_importance": {
+    "G2": 3.6996331627059065,
+    "absences": 0.5868066206547807,
+    "age": 0.054006926967479156,
+    "G1": 0.02897124754367626,
+    "course": 0.02454238100165442,
+    "goout": 0.023405458426525527,
+    "failures": 0.02158746060129304,
+    "higher": 0.0028614997159887986,
+    "internet": 4.996277597690835e-06,
+    "freetime": -0.0019767161490347926,
+    "health": -0.0023863415212134567,
+    "studytime": -0.005138529178591641
+  },
+  "eda": {
+    "rows": 1044,
+    "g3_mean": 11.341954022988507,
+    "g3_std": 3.8647958043836046,
+    "fail_rate_g3_lt_10": 0.22030651340996169,
+    "corr_with_g3": {
+      "G2": 0.9107431630583613,
+      "G1": 0.8091417205401173,
+      "studytime": 0.16162893520293836,
+      "absences": -0.04567057698837352,
+      "freetime": -0.06488967904803558,
+      "health": -0.0800786395825788,
+      "goout": -0.0978772596884402,
+      "age": -0.12528243256717936,
+      "failures": -0.3831452797182743
+    },
+    "mean_g3_by_course": {
+      "math": 10.415189873417722,
+      "portuguese": 11.906009244992296
+    }
+  },
+  "dataset": {
+    "name": "Student Performance (Cortez & Silva, 2008)",
+    "source": "https://archive.ics.uci.edu/dataset/320/student+performance",
+    "license": "CC BY 4.0",
+    "citation": "P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira (Eds.), Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008), pp. 5-12, Porto, Portugal, April 2008."
+  }
+}

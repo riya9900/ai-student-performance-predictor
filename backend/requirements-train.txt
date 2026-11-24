@@ -1,0 +1,6 @@
+# Only needed to RE-TRAIN the model (python -m ml.train). Not needed to run the API.
+-r requirements.txt
+pandas>=2.2
+scikit-learn>=1.5
+joblib>=1.4
+matplotlib>=3.8

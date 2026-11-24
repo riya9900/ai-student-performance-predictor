@@ -1,0 +1,32 @@
+# Render Blueprint - deploys the FastAPI backend.
+services:
+  - type: web
+    name: student-predictor-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    # The trained model (models/model.npz) is committed; the API needs only NumPy - no scikit-learn.
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      # Set this in the Render dashboard to your Vercel URL, e.g. https://my-app.vercel.app
+      - key: CORS_ORIGINS
+        sync: false
+      # PostgreSQL connection string (Neon / Supabase / Render Postgres). Without it history is
+      # stored in SQLite on Render's ephemeral disk and is lost on restart.
+      - key: DATABASE_URL
+        sync: false
+      # Optional: also allow Vercel preview deployments
+      # - key: CORS_ORIGIN_REGEX
+      #   value: https://.*\.vercel\.app
+    # --- Persistent history (PAID plans only) -------------------------------
+    # The free plan has an ephemeral disk: prediction history is wiped on every
+    # redeploy / restart. To keep it, switch to a paid plan, uncomment the
+    # block below and add the env var DATABASE_PATH=/var/data/predictions.db
+    # disk:
+    #   name: predictions-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
